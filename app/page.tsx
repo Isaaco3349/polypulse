@@ -1,11 +1,12 @@
 import { fetchMarkets, getTrendingMarkets, getBiggestMovers, getRecentActivity } from '@/lib/polymarket'
+import { Market } from '@/types/market'
 import Header from '@/components/Header'
 import TrendingMarkets from '@/components/TrendingMarkets'
 import ProbabilityMovers from '@/components/ProbabilityMovers'
 import RecentActivity from '@/components/RecentActivity'
 
 export default async function Home() {
-  let markets = []
+  let markets: Market[] = []
   let error = null
 
   try {
