@@ -1,6 +1,7 @@
-import { Market } from '@/types/market'
+import { Market, PricePoint } from '@/types/market'
 
 const GAMMA_API = 'https://gamma-api.polymarket.com'
+const CLOB_API = 'https://clob.polymarket.com'
 
 export async function fetchMarkets(limit = 50): Promise<Market[]> {
   const res = await fetch(
@@ -20,7 +21,18 @@ export async function fetchMarkets(limit = 50): Promise<Market[]> {
     active: m.active,
     closed: m.closed,
     image: m.image,
+    clobTokenIds: JSON.parse(m.clobTokenIds || '[]'),
   }))
+}
+
+export async function fetchPriceHistory(tokenId: string): Promise<PricePoint[]> {
+  const res = await fetch(
+    `${CLOB_API}/prices-history?market=${tokenId}&interval=1d&fidelity=60`,
+    { next: { revalidate: 300 } }
+  )
+  if (!res.ok) return []
+  const data = await res.json()
+  return data.history || []
 }
 
 export function getTrendingMarkets(markets: Market[], limit = 6) {
