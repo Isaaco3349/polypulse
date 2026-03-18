@@ -25,7 +25,7 @@ export default function PriceChart({ history }: { history: PricePoint[] }) {
         <Tooltip
           contentStyle={{ background: '#111118', border: '1px solid #2a2a3a', borderRadius: 6, fontSize: 11 }}
           labelStyle={{ color: '#8888a0' }}
-          formatter={(val: number) => [`${val}%`, 'Probability']}
+          formatter={(val) => [`${val}%`, 'Probability']}
         />
         <Line
           type="monotone"
