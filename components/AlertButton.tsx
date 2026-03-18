@@ -8,7 +8,7 @@ export default function AlertButton({ marketId, question, currentPrice }: {
   question: string
   currentPrice: number
 }) {
-  const { alerts, addAlert, removeAlert, checkAlerts } = useAlerts()
+    const { alerts, addAlert, removeAlert } = useAlerts()
   const [open, setOpen] = useState(false)
   const [threshold, setThreshold] = useState(currentPrice.toFixed(1))
   const [direction, setDirection] = useState<'above' | 'below'>('above')
@@ -30,7 +30,6 @@ export default function AlertButton({ marketId, question, currentPrice }: {
         direction,
         currentPrice,
       })
-      checkAlerts(marketId, currentPrice)
     }
     setOpen(false)
   }
