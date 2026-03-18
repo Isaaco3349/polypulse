@@ -3,7 +3,7 @@
 A real-time Polymarket analytics dashboard built with Next.js 16 and Tailwind CSS.
 
 ## Live Demo
-🔗 https://polypulse.vercel.app
+🔗 https://polypulse-eight.vercel.app/
 
 ## Features
 
