@@ -38,10 +38,11 @@ A real-time Polymarket analytics dashboard built with Next.js 16 and Tailwind CS
 - Browser push notification when probability crosses your target
 - Alerts persist across sessions via localStorage
 
-### 🌐 Individual Market Pages *(coming soon)*
-- Full detail page per market
-- Extended chart history
-- Deep market stats
+### 🌐 Individual Market Pages
+- Dedicated page per market at `/market/[id]`
+- Full probability chart with extended height
+- Yes/No/all outcomes with probability bars
+- Volume, 24h change, and alert button
 
 ## Data Sources
 - **Gamma API** `https://gamma-api.polymarket.com` — markets, volume, probabilities

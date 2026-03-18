@@ -2,6 +2,7 @@ import { Market, PricePoint } from '@/types/market'
 import { fetchPriceHistory } from '@/lib/polymarket'
 import PriceChart from './PriceChart'
 import AlertButton from './AlertButton'
+import Link from 'next/link'
 
 async function MoverCard({ market }: { market: Market }) {
   const tokenId = market.clobTokenIds?.[0]
@@ -13,7 +14,9 @@ async function MoverCard({ market }: { market: Market }) {
   return (
     <div className="bg-gray-900 border border-gray-800 rounded-xl p-4 hover:border-purple-500 transition-colors">
       <div className="flex items-start justify-between gap-2 mb-3">
-        <p className="text-sm text-gray-200 font-medium leading-snug line-clamp-2">{market.question}</p>
+        <Link href={`/market/${market.id}`} className="text-sm text-gray-200 font-medium leading-snug line-clamp-2 hover:text-purple-400 transition-colors">
+          {market.question}
+        </Link>
         <AlertButton marketId={market.id} question={market.question} currentPrice={price} />
       </div>
       <div className="flex items-center justify-between mb-3">

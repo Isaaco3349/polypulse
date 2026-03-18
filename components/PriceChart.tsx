@@ -3,10 +3,10 @@
 import { PricePoint } from '@/types/market'
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts'
 
-export default function PriceChart({ history }: { history: PricePoint[] }) {
+export default function PriceChart({ history, height = 100 }: { history: PricePoint[], height?: number }) {
   if (!history || history.length === 0) {
     return (
-      <div className="flex items-center justify-center h-24 text-xs text-gray-600">
+      <div className="flex items-center justify-center text-xs text-gray-600" style={{ height }}>
         No chart data available
       </div>
     )
@@ -18,7 +18,7 @@ export default function PriceChart({ history }: { history: PricePoint[] }) {
   }))
 
   return (
-    <ResponsiveContainer width="100%" height={100}>
+    <ResponsiveContainer width="100%" height={height}>
       <LineChart data={data}>
         <XAxis dataKey="time" hide />
         <YAxis domain={[0, 100]} hide />
